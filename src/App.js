@@ -3,6 +3,7 @@ import Launches from './components/Launches'
 import './App.css';
 import { ApolloProvider, ApolloClient, InMemoryCache, gql } from '@apollo/client'
 import { useState, useEffect } from 'react';
+import { Pagination } from './components/Pagination';
 
 // create apollo client
 const client = new ApolloClient({
@@ -12,14 +13,20 @@ const client = new ApolloClient({
 
 function App() {
 
+  // initialize stateful logic
+  const [loading, setLoading] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
   const [launches, setLaunches] = useState([])
+  const [launchPerPage] = useState(5);
 
   // make a api call
 
   useEffect(() => {
-    client
-      .query({
-        query: gql`
+
+    setLoading(true)
+
+    client.query({
+      query: gql`
     {
       launches {
         launch_year
@@ -29,19 +36,30 @@ function App() {
         }
       }
     }
-    
-    `
-      })
-      .then(result => setLaunches(la => la = result.data.launches));
+    `}).then(async results => {
+        await setLaunches(results.data.launches)
+        setLoading(false)
+      });
 
   }, [])
+
+  // get current launch
+  const lastLaunchIndex = currentPage * launchPerPage
+  const firstLaunchIndex = lastLaunchIndex - launchPerPage
+  const currentLaunch = launches.slice(firstLaunchIndex, lastLaunchIndex)
+
+  // make a paginate function
+  const paginate = (num) => {
+    setCurrentPage(num)
+  }
 
   return (
     <ApolloProvider client={client}>
       <div className="App">
         <header className="App-header">
           <Header />
-          <Launches launches={launches} />
+          <Pagination launchPerPage={launchPerPage} totalLaunches={launches.length} paginate={paginate} />
+          <Launches launches={currentLaunch} loading={loading} />
         </header>
       </div>
     </ApolloProvider>

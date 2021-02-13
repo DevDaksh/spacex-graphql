@@ -9,3 +9,17 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+
+.pagination {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  list-style-type: none;
+}
+
+.pagination li {
+  border: whitesmoke 1px solid;
+}

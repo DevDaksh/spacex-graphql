@@ -1,11 +1,17 @@
 
-const Launches = ({ launches }) => {
+const Launches = ({ launches, loading }) => {
+
+    if (loading) {
+        return (
+            <h2>loading...</h2>
+        )
+    }
 
     return (
         <>
             {
-                launches.map(el => (
-                    <h2>{el}</h2>
+                launches.map((el, idx) => (
+                    <h2 key={idx}>{el.mission_name}</h2>
                 ))
             }
         </>
