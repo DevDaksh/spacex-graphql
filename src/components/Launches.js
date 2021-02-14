@@ -8,13 +8,15 @@ const Launches = ({ launches, loading }) => {
     }
 
     return (
-        <>
+        <div className="self-center">
             {
                 launches.map((el, idx) => (
-                    <h2 key={idx}>{el.mission_name}</h2>
+                    <div className="container mx-auto py-6">
+                        <h2 key={idx} className="">{el.mission_name}</h2>
+                    </div>
                 ))
             }
-        </>
+        </div>
     )
 }
 
