@@ -55,10 +55,10 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <div className="App">
+      <div className="App w-full">
         <header className="App-header">
           <Header />
-          <Pagination launchPerPage={launchPerPage} totalLaunches={launches.length} paginate={paginate} />
+          <Pagination launchPerPage={launchPerPage} totalLaunches={launches.length} paginate={paginate} currentPage={currentPage} />
           <Launches launches={currentLaunch} loading={loading} />
         </header>
       </div>

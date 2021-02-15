@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Reggae+One&display=swap');
 
 .App-header {
   background-color: #282c34;
@@ -18,8 +19,15 @@
   flex-direction: row;
   width: 100%;
   list-style-type: none;
+  transition: 0.8s all ease;
 }
 
-.pagination li {
-  border: whitesmoke 1px solid;
+.bigHead {
+  font-family: "Reggae One";
+}
+
+.activePage {
+  background: violet;
+  padding: 0.8rem;
+  border-radius: 0.375rem;
 }
