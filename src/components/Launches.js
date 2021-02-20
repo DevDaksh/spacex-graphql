@@ -11,9 +11,10 @@ const Launches = ({ launches, loading }) => {
         <div className="self-center">
             {
                 launches.map((el, idx) => (
-                    <div className="container mx-auto py-6">
-                        <h2 key={idx} className="text-md text-white-100">{el.mission_name}</h2>
-
+                    <div key={idx} className="container mx-auto py-6 rounded-md min-w-min min-h-min  ">
+                        <h2 className="text-3xl text-white-100">{el.mission_name}</h2>
+                        <h4 className='text-sm'>{el.launch_year}</h4>
+                        <p className="text-xl">{el.rocket.rocket_name}</p>
                     </div>
                 ))
             }

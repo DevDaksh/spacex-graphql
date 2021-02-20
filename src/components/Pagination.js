@@ -9,7 +9,7 @@ export const Pagination = ({ launchPerPage, totalLaunches, paginate, currentPage
 
     const checkPage = (id) => {
         if (currentPage === id) {
-            return "activePage"
+            return "activePage animate-bounce inline-flex rounded-full bg-purple-500"
         }
         else {
             return;
